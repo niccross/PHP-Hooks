@@ -2,17 +2,17 @@
 /**
  * PHP Hooks Class
  *
- * The PHP Hooks Class is a fork of the WordPress filters hook system rolled in to a class to be ported 
+ * The PHP Hooks Class is a fork of the WordPress filters hook system rolled in to a class to be ported
  * into any php based system
  *
  * This class is heavily based on the WordPress plugin API and most (if not all) of the code comes from there.
- * 
- * 
+ *
+ *
  * @version 0.1.3
  * @copyright 2012 - 2014
  * @author Ohad Raz (email: admin@bainternet.info)
  * @link http://en.bainternet.info
- * 
+ *
  * @license GNU General Public LIcense v3.0 - license.txt
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -43,7 +43,7 @@ if (!class_exists('Hooks')){
      */
     var $merged_filters = array();
     /**
-     * $actions 
+     * $actions
      * @var array
      */
     var $actions = array();
@@ -54,7 +54,7 @@ if (!class_exists('Hooks')){
      * @var array
      */
     var $current_filter = array();
-    
+
     /**
      * __construct class constructor
      * @access public
@@ -374,7 +374,7 @@ if (!class_exists('Hooks')){
      * @return null Will return null if $tag does not exist in $filter array
      */
     public function do_action_ref_array($tag, $args) {
-      
+
       if ( ! isset($this->actions) )
         $this->actions = array();
 
@@ -456,7 +456,7 @@ if (!class_exists('Hooks')){
     function current_action() {
       return $this->current_filter();
     }
-    
+
     /**
      * Retrieve the name of a filter currently being processed.
      *
@@ -479,10 +479,10 @@ if (!class_exists('Hooks')){
     function doing_filter( $filter = null ) {
       if ( null === $filter ) {
         return ! empty( $this->current_filter );
-      } 
+      }
       return in_array( $filter, $this->current_filter );
     }
-    
+
     /**
      * Retrieve the name of an action currently being processed.
      *
@@ -497,7 +497,7 @@ if (!class_exists('Hooks')){
     function doing_action( $action = null ) {
       return $this->doing_filter( $action );
     }
-    
+
     /**
      * _filter_build_unique_id Build Unique ID for storage and retrieval.
      * @param string $tag Used in counting how many hooks were applied
@@ -548,7 +548,7 @@ if (!class_exists('Hooks')){
      * @since 0.1
      * @param  (array) $args [description]
      */
-    public function __call_all_hook($args) {
+    public function _call_all_hook($args) {
       reset( $this->filters['all'] );
       do {
         foreach( (array) current($this->filters['all']) as $the_ )
